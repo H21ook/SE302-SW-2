@@ -1,0 +1,23 @@
+            string title = "Console Application Car";
+            Console.Title = title;
+            while (!Console.KeyAvailable) 
+            {
+                Console.BackgroundColor = ConsoleColor.Cyan;
+                Console.Clear();   // display-g tsewerleh
+                Console.SetCursorPosition((Console.WindowWidth - title.Length) / 2,Console.WindowHeight / 2); /* title-g console-d golluuj bn*/
+                Console.BackgroundColor = ConsoleColor.Gray; // ariin ogno
+                Console.ForegroundColor = ConsoleColor.DarkRed; // bichignii ongo
+                Console.Write(title);
+                System.Threading.Thread.Sleep(1500);
+
+                Console.BackgroundColor = ConsoleColor.DarkCyan;
+                Console.Clear();
+                Console.SetCursorPosition((Console.WindowWidth - title.Length) / 2, Console.WindowHeight / 2);
+                Console.BackgroundColor = ConsoleColor.DarkRed;
+                Console.ForegroundColor = ConsoleColor.Gray;
+                Console.Write(title);
+                System.Threading.Thread.Sleep(1500);
+            }
+            Console.BackgroundColor = ConsoleColor.DarkGray;
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Clear();
