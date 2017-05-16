@@ -26,7 +26,6 @@ namespace ConsoleApplication2
             Console.CursorVisible = false;
             int start = 0;
             start = Menu();
-            
             if (start == 1)
             {
                 
@@ -41,6 +40,21 @@ namespace ConsoleApplication2
                 Program.MoveGame(car);
             }
         }
+        private static int Menu()
+        {
+            MenuProgram menu = new MenuProgram();
+            menu.CreateMenu();
+            int start = 0;
+            while (true)
+            {
+                ConsoleKeyInfo pressedKey = Console.ReadKey(true);
+                start = menu.SelectArrow(pressedKey);
+                if (start == 1)
+                {
+                    return 1;
+                }
+            }
+        }        
         public static void MoveGame(Car car)
         {
             DrawDisplay d = new DrawDisplay();
