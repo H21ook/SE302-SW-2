@@ -10,8 +10,8 @@ namespace ConsoleApplication2
     {
         public int X { get; set; } // x coordinat
         public int Y { get; set; } // y coordinat
-        public static int LENGTH = 3; // mashinii urt
-        public static int WIDTH = 4;// mashinii orgon
+        public const int LENGTH = 3; // mashinii urt
+        public const int WIDTH = 4;// mashinii orgon
 
         public string[,] carbody = new string[,]
         {
@@ -30,20 +30,45 @@ namespace ConsoleApplication2
             this.X = x;
             this.Y = y;
         }
-        public void Move(int x, int y)
+        public void Rotate(ConsoleKeyInfo pressedKey)
+        {
+            switch (pressedKey.Key)
+            {
+                case ConsoleKey.RightArrow:
+                    if (X < (Program.SCREENWIDTH - 1) - Car.WIDTH)
+                    {
+                        Move(1, 0);
+                    }
+                    break;
+
+                case ConsoleKey.LeftArrow:
+                    if (X > Program.SCREENWIDTH - (Program.SCREENWIDTH - 1))
+                    {
+                        Move(-1, 0);
+                    }
+                    break;
+            }
+        }
+
+        private void Move(int x, int y)
         {
             X += x;
             DrawDisplay d = new DrawDisplay();
             d.DrawCar(this);
+        }
 
-            for (int i = 0; i < LENGTH; i++)
+        public void isDestroy(Problem newproObj)
+        {
+            Level l = new Level();
+            if (l.levelnumber == 1 && ((newproObj.coordinatY == Y || newproObj.coordinatY == Y + 1 || newproObj.coordinatY == Y + 2) && (newproObj.coordinatX == X || newproObj.coordinatX == X + 1 || newproObj.coordinatX == X + 2 || newproObj.coordinatX == X + 3 || newproObj.coordinatX + 1 == X || newproObj.coordinatX + 1 == X + 1 || newproObj.coordinatX + 1 == X + 2 || newproObj.coordinatX + 1 == X + 3 || newproObj.coordinatX + 2 == X || newproObj.coordinatX + 2 == X + 1 || newproObj.coordinatX + 2 == X + 2 || newproObj.coordinatX + 2 == X + 3))
+                || l.levelnumber == 2 && ((newproObj.coordinatY == Y || newproObj.coordinatY == Y + 1 || newproObj.coordinatY == Y + 2) && (newproObj.coordinatX == X || newproObj.coordinatX == X + 1 || newproObj.coordinatX == X + 2 || newproObj.coordinatX == X + 3 || newproObj.coordinatX + 1 == X || newproObj.coordinatX + 1 == X + 1 || newproObj.coordinatX + 1 == X + 2 || newproObj.coordinatX + 1 == X + 3 || newproObj.coordinatX + 2 == X || newproObj.coordinatX + 2 == X + 1 || newproObj.coordinatX + 2 == X + 2 || newproObj.coordinatX + 2 == X + 3 || newproObj.coordinatX + 3 == X || newproObj.coordinatX + 3 == X + 1 || newproObj.coordinatX + 3 == X + 2 || newproObj.coordinatX + 3 == X + 3))
+                || l.levelnumber == 3 && ((newproObj.coordinatY == Y || newproObj.coordinatY == Y + 1 || newproObj.coordinatY == Y + 2) && (newproObj.coordinatX == X || newproObj.coordinatX == X + 1 || newproObj.coordinatX == X + 2 || newproObj.coordinatX == X + 3 || newproObj.coordinatX + 1 == X || newproObj.coordinatX + 1 == X + 1 || newproObj.coordinatX + 1 == X + 2 || newproObj.coordinatX + 1 == X + 3 || newproObj.coordinatX + 2 == X || newproObj.coordinatX + 2 == X + 1 || newproObj.coordinatX + 2 == X + 2 || newproObj.coordinatX + 2 == X + 3 || newproObj.coordinatX + 3 == X || newproObj.coordinatX + 3 == X + 1 || newproObj.coordinatX + 3 == X + 2 || newproObj.coordinatX + 3 == X + 3 || newproObj.coordinatX + 4 == X || newproObj.coordinatX + 4 == X + 1 || newproObj.coordinatX + 4 == X + 2 || newproObj.coordinatX + 4 == X + 3)))
             {
-                if (x == -1)
-                    Console.SetCursorPosition(X + WIDTH, Y + i);
-                else
-                    Console.SetCursorPosition(X - 1, Y + i);
-                Console.Write(" ");
+                Program.suirel = true;
+                Program.speed = 0;
+                Program.isEnd(this);
             }
         }
     }
+
 }
