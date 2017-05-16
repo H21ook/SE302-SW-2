@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApplication2
 {
-    public class DrawDisplay
+ public class DrawDisplay
     {
         public void DrawRoad(int roadlenght, int roadwidth)
         {
@@ -19,7 +19,7 @@ namespace ConsoleApplication2
                     if (j == 0 || j == Road.roadarr.GetLength(1) - 1)
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
-                        Road.roadarr[i, j] = "*";
+                        Road.roadarr[i, j] = "█";
                     }
                     else
                     {
@@ -67,7 +67,7 @@ namespace ConsoleApplication2
         {
                 for (int j = 0; j < p.problem.Length; j++)
                 {
-                    Console.ForegroundColor = p.color;
+                    Console.ForegroundColor = ConsoleColor.Blue;
                     Console.SetCursorPosition(p.coordinatX + j, p.coordinatY);
                     Console.Write(p.problem[j]);
                 }
@@ -93,4 +93,5 @@ namespace ConsoleApplication2
             }
         }
     }
+
 }
