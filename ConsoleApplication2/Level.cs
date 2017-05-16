@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApplication2
 {
-    public class Level
+     public class Level
     {
         public int levelnumber = 1;
         public int lvladdscore = 2000;
