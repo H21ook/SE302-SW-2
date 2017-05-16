@@ -19,7 +19,7 @@ namespace ConsoleApplication2
                     if (j == 0 || j == Road.roadarr.GetLength(1) - 1)
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
-                        Road.roadarr[i, j] = "█";
+                        Road.roadarr[i, j] = "*";
                     }
                     else
                     {
